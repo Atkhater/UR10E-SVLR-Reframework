@@ -1,0 +1,22 @@
+python-dotenv
+langchain
+langchain-openai
+langchain-huggingface
+numpy
+scipy
+torch
+sentence_transformers
+transformers
+bitsandbytes
+accelerate
+torchvision
+peft
+einops
+timm
+packaging
+wheel
+flash_attn #==1.0.9
+sentencepiece
+matplotlib
+opencv-python
+scikit-image
