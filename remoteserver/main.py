@@ -1,3 +1,6 @@
+"""Main script to run the robot control loop.
+Sends JSON data over a socket connection.
+"""
 import threading
 import argparse
 import json
@@ -89,9 +92,9 @@ def simulation_controller(args, conn=None):
         conn.close()
         print("Connection closed.")
 
-
+# Checks if the computer IP is allowed
 def handle_client(conn, addr, args):
-    allowed_client_ip = "192.168.168.76"  # Replace with your actual client IP
+    allowed_client_ip = "192.168.168.76" #Change this IP for your computer IP
     if addr[0] != allowed_client_ip:
         print(f"Rejected connection from {addr[0]}. Only accepting connections from {allowed_client_ip}.")
         conn.close()
@@ -120,6 +123,7 @@ def start_server(args):
         server.close()
         print("Server socket closed.")
 
+#This isn't used. Used the simulation controller for real controller instead.
 def real_controller(args):
     # Placeholder for the real controller logic when not in simulation mode
     print("Running real controller... (not implemented)")

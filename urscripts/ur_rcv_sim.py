@@ -1,3 +1,14 @@
+'''
+Aly Khater
+HMI2 Lab
+This script connects to a UR robot and sends URScript commands to it.
+It also controls a Robotiq gripper via its TCP/IP interface.
+
+Key functionality:
+- Establishes a TCP socket connection to the UR robot controller.
+- Sends URScript commands to move the robot to specified poses.
+- Interfaces with a Robotiq gripper to open and close it based on commands.
+'''
 import socket
 import robotiq_gripper
 import time
@@ -8,12 +19,13 @@ PRIMARY_PORT = 30001
 new_line = "\n"
 
 gripper_ip = "192.168.168.5"
+# This port needs to be allowed on the robot controller itself
 gripper_port = 63352
 
 gripper = robotiq_gripper.RobotiqGripper()
 gripper.connect(gripper_ip, gripper_port, True)
 
-#DONT unCOMMENT UNLESS NEEDED
+#Activates gripper (THERE IS A DELAY FOR ACTIVATING)
 gripper.activate()
 
 def send_urscript_command(command: str):
@@ -29,7 +41,8 @@ def send_urscript_command(command: str):
         print("URScript command sent successfully.")
     except Exception as e:
         print(f"An error occurred: {e}")
-        
+
+# Sends a named command to the robot
 def send_named_command(command):
     if command == "go_to_glove":
         print("Going to glove position")
@@ -54,8 +67,6 @@ def control_gripper(gripper_value):
     """
     Controls the Robotiq gripper based on the given value.
     """
-
-
     if gripper_value >= 200:
         #time.sleep(25)
         print("Closing gripper...")
@@ -67,19 +78,20 @@ def control_gripper(gripper_value):
     #gripper.disconnect()
     print("Gripper action complete.")
 
+#Testing area to make sure robot and gripper commands work and go to the correct positions given from remote_send_sim.
 if __name__ == "__main__":
     # Test pose and gripper command
     initial_pose = [.160,.960,.426,3.131,-0.396,0.009]
-    next_pose = [-0.027607652818406048, 1.0096836942414482, -0.0040000000000000036,3.131,-0.396,0.009]
-    test_pose = [0.16095035287528445, 1.0370682512043379, -0.0040000000000000036,3.131,-0.396,0.009]
-    test_gripper_value = 220  # Change to <200 to test opening
-    open_gripper = 20
-    send_pose_as_command(test_pose)
-    time.sleep(7)
-    control_gripper(test_gripper_value)
-    time.sleep(5)
-    send_pose_as_command(initial_pose)
-    time.sleep(7)
-    send_pose_as_command(next_pose)
-    time.sleep(7)
-    control_gripper(open_gripper)
+    #next_pose = [-0.027607652818406048, 1.0096836942414482, -0.0040000000000000036,3.131,-0.396,0.009]
+    #test_pose = [0.16095035287528445, 1.0370682512043379, -0.0040000000000000036,3.131,-0.396,0.009]
+    #test_gripper_value = 220  # Change to <200 to test opening
+    #open_gripper = 20
+    #send_pose_as_command(test_pose)
+    #time.sleep(7)
+    #control_gripper(test_gripper_value)
+    #time.sleep(5)
+    #send_pose_as_command(initial_pose)
+    #time.sleep(7)
+    #send_pose_as_command(next_pose)
+    #time.sleep(7)
+    #control_gripper(open_gripper)
