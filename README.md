@@ -5,10 +5,13 @@ Remote server files are for an external computing center (such as a remote serve
 
 User interface is through the main PC. 
 * Using VSCodes Remote Explorer (found on extensions), SSH directly to the IP of the remote server (in this case my log in).
-* In the terminal, run 'python main.py --show_image --simulation --simulation_image_file your_image.png' , where your_image.png is replaced with the image from the camera. The default name can be set. At this point, it will be waiting for a connection from the MainPC.
+* In the terminal, run `python main.py --show_image --simulation --simulation_image_file your_image.png` , where your_image.png is replaced with the image from the camera. The default name can be set. At this point, it will be waiting for a connection from the MainPC.
 * Open up the terminal on the MainPC.
-* In the terminal, run 'ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur10e robot_ip:=<Insert IP here>' to enable the controllers on the robot.
-* In a new tab of the terminal, run 
+* In the terminal, `run ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur10e robot_ip:=_Insert_IP_Here_` to enable the controllers on the robot.
+* In a new tab of the terminal, run the _remote_send_sim.py_ file via `python remote_send_sim.py`.
+* This will connect the remote server code and the main PC code. The remote server will ask for user input, in which you can ask the robot to perform a task.
+* After the user input, the system should handle the rest.
+
 ## Three System components
 * **Main PC:** _urscripts_ files is found on the main PC. Our main communication hub. Captures input from vision, forwards image data, receives perception results, translates results into actional commands, sends commands, and ensures timing and sequence.
 * **Remote Server:** _remoteserver_ is found on the remote server. SVLR VLM-LLM pipeline exists on remote server. Utilize SSH protocol and network sockets to communicate between Remote Server and Main PC.
