@@ -15,15 +15,21 @@ Remote server files are for an external computing center (such as a remote serve
 
 ## JSON File
 Includes the following parameters:
-* **pos_end_effector** - Position of the end effector and its action
-* * **gripper** - action of the gripper
-* **move** -
-* **pick and place** - 
-* **open** - 
-* **close** - 
-* **action_id** - 
-* **step** - 
-* **objects_detected** - 
-* **user_command** - 
-* **generated_action** - 
-* **timestamp** - 
+* **pos_end_effector** - End effector position to be controlled
+  * **move** - Action of the end effector, move from A to B
+* **gripper** - action of the gripper
+  * **open** - open the gripper
+  * **close** - close the gripper
+* **action_id** - Allows grouping of actions into one id should multiple actions occur sequentially
+* **step** - Allows seeing each step of the controlled sequence of actions
+* **objects_detected** - What objects are detected in the environment
+* **user_command** - The LLM input of the user
+* **generated_action** - What action was generated e.g. "move" or "pick and place"
+* **timestamp** - timestamp for troubleshooting purposes
+
+## Robot Workflow
+
+<img width="1109" height="546" alt="image" src="https://github.com/user-attachments/assets/3b51445f-ce4a-4620-a5ec-7f8aa9ea5c28" />
+
+Presentation and Examples can be found on my google slide presentation
+https://docs.google.com/presentation/d/1fFHMVcorjudS-x4gTP2paeiI849NgUsTP5x2PNdIvKo/edit?usp=sharing
