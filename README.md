@@ -1,7 +1,14 @@
 Remodel of the system architecture of SVLR to fit our system needs.
 
 Remote server files are for an external computing center (such as a remote server in the HMI2 lab). Handles VLM segmentation and LLM semantic and inferencing. Check the README in the remote server for more information.
+# How to use
 
+User interface is through the main PC. 
+* Using VSCodes Remote Explorer (found on extensions), SSH directly to the IP of the remote server (in this case my log in).
+* In the terminal, run 'python main.py --show_image --simulation --simulation_image_file your_image.png' , where your_image.png is replaced with the image from the camera. The default name can be set. At this point, it will be waiting for a connection from the MainPC.
+* Open up the terminal on the MainPC.
+* In the terminal, run 'ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur10e robot_ip:=<Insert IP here>' to enable the controllers on the robot.
+* In a new tab of the terminal, run 
 ## Three System components
 * **Main PC:** _urscripts_ files is found on the main PC. Our main communication hub. Captures input from vision, forwards image data, receives perception results, translates results into actional commands, sends commands, and ensures timing and sequence.
 * **Remote Server:** _remoteserver_ is found on the remote server. SVLR VLM-LLM pipeline exists on remote server. Utilize SSH protocol and network sockets to communicate between Remote Server and Main PC.
