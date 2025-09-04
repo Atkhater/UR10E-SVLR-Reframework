@@ -1,4 +1,4 @@
-Remodel of the system architecture of SVLR to fit out system needs.
+Remodel of the system architecture of SVLR to fit our system needs.
 
 Remote server files are for an external computing center (such as a remote server in the HMI2 lab). Handles VLM segmentation and LLM semantic and inferencing. Check the README in the remote server for more information.
 
@@ -32,4 +32,5 @@ Includes the following parameters:
 <img width="1109" height="546" alt="image" src="https://github.com/user-attachments/assets/3b51445f-ce4a-4620-a5ec-7f8aa9ea5c28" />
 
 Presentation and Examples can be found on my google slide presentation
+
 https://docs.google.com/presentation/d/1fFHMVcorjudS-x4gTP2paeiI849NgUsTP5x2PNdIvKo/edit?usp=sharing
