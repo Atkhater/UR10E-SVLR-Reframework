@@ -8,7 +8,22 @@ Remote server files are for an external computing center (such as a remote serve
 * **UR10e Controller:** Controller allows the robot to move. Receieves our motion commands via URScript from the MainPC to give joint positions, velocities, and timing to the robot itself.
 
 ## Architecture
-• Robot Info: This component includes a text-based description of the robot’s capabilities, provided to the LLM. It also contains the description and link to the robot tasks set, which is a collection of pre-programmed tasks. These tasks are selected and parametrized by the framework to execute the user’s instruction
-• Perception Module: Identifies and retrieves objects in previously unseen environments.
-• LLM: The LLM determines the sequence of tasks required to respond to the language instruction.
-• Action Manager: The Action Manager executes the finalized tasks with their parameters and sends commands to the robot controller.
+* **Robot Info:** This component includes a text-based description of the robot’s capabilities, provided to the LLM. It also contains the description and link to the robot tasks set, which is a collection of pre-programmed tasks. These tasks are selected and parametrized by the framework to execute the user’s instruction
+* **Perception Module:** Identifies and retrieves objects in previously unseen environments.
+* **LLM:** The LLM determines the sequence of tasks required to respond to the language instruction.
+* **Action Manager:** The Action Manager executes the finalized tasks with their parameters and sends commands to the robot controller.
+
+## JSON File
+Includes the following parameters:
+* **pos_end_effector** - Position of the end effector and its action
+* * **gripper** - action of the gripper
+* **move** -
+* **pick and place** - 
+* **open** - 
+* **close** - 
+* **action_id** - 
+* **step** - 
+* **objects_detected** - 
+* **user_command** - 
+* **generated_action** - 
+* **timestamp** - 
